@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class Restaurante {
 
@@ -7,10 +11,6 @@ public class Restaurante {
 		luego escogeremos que queremos para comer. Una vez hecho esto se deberá calcular el precio de la comida el 
 		programa nos dirá con qué billetes debemos pagar.
 		
-		FASE 1
-		 Cree una variable int por cada uno de los billetes que existen desde 5 € a 500 €, deberá crear otro variable 
-		para guardar el precio total de la comida.
-		 Crea dos arrays, uno donde guardaremos el menú y otro donde guardaremos el precio de cada plato.
 		FASE 2
 		 Con un bucle for deberemos rellenar los dos arrays anteriormente creados. Añadiremos el nombre del plato y luego
 		 el precio. Puedes hacer uso de diccionarios de datos (Java HasMap)
@@ -37,13 +37,31 @@ public class Restaurante {
 		int eDoscientos=200;
 		int eQuinientos=500;
 		int totalPrice=0;
+				
+		HashMap<String, Double> menu=new HashMap<String,Double>();
 		
-		String foodMenu[];
-		double priceMenu[];
+		int numMenu=3;
 		
+		Scanner scan=new Scanner(System.in);
 		
+		for (int i=0; i<numMenu;i++) {
+			System.out.println("ingreso nombre y precio del plato "+i);
+			menu.put(scan.next(),scan.nextDouble());
+		}
 		
+		for (String i : menu.keySet() ){
+			System.out.println("Plato: "+ i + " Precio: "+ menu.get(i));
+		}
 		
+		int more=1;
+		List<String> order = new ArrayList<String>();
+		while(more==1) {
+			System.out.println("¿Que quiere comer?");
+			order.add(scan.next());
+			System.out.println("quiere seguir pidiendo comida (1: Si / 0: No)");
+			more=scan.nextInt();
+		}
+
 	}
 
 }
